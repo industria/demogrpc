@@ -5,7 +5,10 @@ Running server :
 
 mvn exec:java -Dexec.mainClass=dk.eb.sample.grpc.demo.DemoServer
 
+java -cp target/demo-1.0-SNAPSHOT.jar:target/lib/*  dk.eb.sample.grpc.demo.DemoServer
+
 in another window run
 
 mvn exec:java -Dexec.mainClass=dk.eb.sample.grpc.demo.DemoClient
 
+java -cp target/demo-1.0-SNAPSHOT.jar:target/lib/*  dk.eb.sample.grpc.demo.DemoClient
