@@ -12,3 +12,13 @@ in another window run
 mvn exec:java -Dexec.mainClass=dk.eb.sample.grpc.demo.DemoClient
 
 java -cp target/demo-1.0-SNAPSHOT.jar:target/lib/*  dk.eb.sample.grpc.demo.DemoClient
+
+
+
+Docker
+
+docker run --publish 8007:8777 --detach --name demo demo/demo:1.0-SNAPSHOT 
+
+Test the server in the container with 
+
+java -Dhostport=localhost:8007 -cp target/demo-1.0-SNAPSHOT.jar:target/lib/*  dk.eb.sample.grpc.demo.DemoClient

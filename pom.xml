@@ -12,6 +12,8 @@
         <grpc.version>1.27.0</grpc.version>
         <protobuf.version>3.11.0</protobuf.version>
         <protoc.version>3.11.0</protoc.version>
+        <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+         
         <!--
                 <maven.compiler.source>1.7</maven.compiler.source>
                 <maven.compiler.target>1.7</maven.compiler.target>
@@ -129,7 +131,7 @@
                     </execution>
                 </executions>
             </plugin>
-             <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>1.4.1</version>
@@ -147,6 +149,29 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- docker image -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile-maven-version}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dockerfile>Dockerfile</dockerfile>
+                    <repository>demo/demo</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>        
         </plugins>
     </build>
 </project>

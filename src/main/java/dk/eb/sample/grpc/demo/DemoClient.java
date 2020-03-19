@@ -23,8 +23,9 @@ public class DemoClient {
     }
     
     public static void main(String[] args) throws Exception {
-
-        ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8777").usePlaintext().build();
+        String target = System.getProperty("hostport", "localhost:8777");
+        System.out.println("Target: " + target);
+        ManagedChannel channel = ManagedChannelBuilder.forTarget(target).usePlaintext().build();
         try {
             DemoClient client = new DemoClient(channel);
 
