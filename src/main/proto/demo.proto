@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "dk.eb.sample.grpc.demo";
+option java_outer_classname = "DemoProto";
+
+package demopackage;
+
+
+service DemoThings  {
+    rpc GetSomeThing(Some) returns (Thing) {}
+
+}
+
+
+message Some {
+    int32 id = 1;
+}
+
+message Thing {
+    int32 id = 1;
+    string value = 2;
+}

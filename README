@@ -1,0 +1,11 @@
+
+
+
+Running server :
+
+mvn exec:java -Dexec.mainClass=dk.eb.sample.grpc.demo.DemoServer
+
+in another window run
+
+mvn exec:java -Dexec.mainClass=dk.eb.sample.grpc.demo.DemoClient
+
